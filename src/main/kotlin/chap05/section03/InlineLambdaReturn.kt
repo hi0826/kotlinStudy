@@ -10,9 +10,10 @@ inline fun inlineLambda(a: Int, b: Int, out: (Int, Int) -> Unit) {
 
 fun retFunc() {
     println("start of Func")
-    inlineLambda(12, 3) lit@{a, b ->
+    inlineLambda(12, 3) {a, b ->
         val result = a + b
-        if(result > 10) return@lit
+        // 암묵적 라벨
+        if(result > 10) return@inlineLambda
         println("result : $result")
     }
     println("end of Func")
