@@ -33,4 +33,24 @@ var m = 1
 m = m.also { it + 3 }
 println(m) // 원본 값 1
 ```
-- 
+
+### apply
+- also와 비슷하게 호출하는 T를 block으로 넘겨주고 객체 자체인 this를 반환
+`public inline fun <T> T.apply(block: T.() -> Unit): T { block(); return this }`
+- T를 인자로 받아서 처리하는 것이 아닌 확장 함수로서 처리
+  - T.()
+  - 반환 값이 없음
+  - it 을 사용하지 않음, this로서 처리할 수 있음
+    - this 라서 생략 가능
+- 레이아웃을 초기화할 때 apply 활용하기
+  - android
+- 디렉터리 생성 시 apply() 적용하기
+```kotlin
+fun makeDir(path: String): File {
+  val result = File(path)
+  result.mkdirs()
+  return result
+}
+// 로 함축가능
+File(path).apply { mkdirs() }
+```
