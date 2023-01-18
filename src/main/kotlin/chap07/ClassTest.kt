@@ -8,7 +8,6 @@ class Car {
     }
 }
 
-class Bird
 
 fun main() {
     // val sonata: Car = Car()
