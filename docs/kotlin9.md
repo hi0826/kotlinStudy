@@ -27,3 +27,42 @@
 - 인터페이스의 위임
     - 인터페이스의 일반 메서드가 있는 경우
     - 다른 클래스에서 인터페이스를 프로퍼티로 받아서 특정 메서드에서 실행 시킴
+
+# 데이터 전달을 위한 데이터 클래스
+- 데이터 전달을 위한 객체 DTO(Data Transfer Object)
+  - java 에서는 POJO(Plain Old Java Object)
+  - 구현 로직을 가ㅣㅈ고 있지 않음, 순수한 데이터 객체를 표현
+  - getter, setter 포함
+  - toString, equal 같은 데이터 표현 및 비교 메서드 포함
+  - 코틀리는 프로퍼티만 신경써서 만들어주면 다른 것들은 자동 생성해준다.
+  
+## 코틀린의 데이터 클래스
+- data class 키워드를 사용해 정의
+- 게터, 세터, equals, hashCode, toString, copy, component1, component2 등 메서드 자동생성 지원
+
+## 데이터 클래스 선어
+- `data class Customer(var name: String, var email: String)`
+- 데이터 클래스의 조건
+  - 주 생성자는 최소한 하나의 매개변수를 가져야 한다.
+  - 주 생성자의 모든 매개변수는 val, var로 지정된 프로퍼티여야함
+  - 데이터 클래스는 abstract, open, sealed, inner 키워드를 사용할 수 없다
+  - "부 생성자"나 "init" 블록을 넣어 데이터를 위한 간단한 로직을 포함할 수 있다
+- hashCode > 고유값을 나타낸다
+
+## 객체 디스트럭처링
+- 객체가 가지고 있는 프로퍼티들을 개별 변수들로 분해
+  - `val (name, email) = cus1`
+- 특정 프로퍼티를 가져올 필요 없는 경우
+  - `val (_, email) = cus1`
+- for 를 사용해서도 가져올 수 있음
+- 함수로부터 객체가 반환될 경우
+  - `val (myName, myEmail) = myFunc()`
+- 람다식에서 사용하는 경우
+```kotlin
+val myLambda = {
+  (nameLa, emailLa): Customer ->
+  println(nameLa)
+  println(emailLa)
+}
+myLambda(cus1)
+```
