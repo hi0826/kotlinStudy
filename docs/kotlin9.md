@@ -66,3 +66,5 @@ val myLambda = {
 }
 myLambda(cus1)
 ```
+
+# 내부 클래스와 중첩 클래스
