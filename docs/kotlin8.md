@@ -1,36 +1,43 @@
 ## 프로퍼티와 초기화
+
 ### 2.1 프로퍼티의 접근 1) 접근 메서드: 세터 게터
+
 - 코틀린은 기본적인 접근 메서드를 내부적으로 생성하여 가지고 있다.
 - 프로퍼티에 대한 것만 신경쓰면된다.
 - 게터와 세터의 동작 방식
+
 ```kotlin
 fun main() {
     val user = User(1, "Sean", 30)
-    
+
     // getter에 의한 값 획득
     val name = user.name
-    
+
     // setter에 의한 값 지정
     user.age = 41
-    
+
     println("name : $name, ${user.age}")
 }
 ```
+
 - 프로퍼티에 직접 접근하는 것 처럼 보이지만 getter와 setter가 동작
 
 ### 2.1 프로퍼티의 접근 2) 커스텀: 내맘대로 세터 게터
+
 - 기본 게터와 세터 직접 지정
 - val 은 게터만 설정 가능 (읽기 전용)
 - `field` 라는 키워드를 사용
-    - 프로퍼티를 참조하는 변수로 `backing field`라고 불림
-    - 프로퍼티를 직접 사용하게되면 게터 세터를 호출해 무한 재귀에 빠진다.
+  - 프로퍼티를 참조하는 변수로 `backing field`라고 불림
+  - 프로퍼티를 직접 사용하게되면 게터 세터를 호출해 무한 재귀에 빠진다.
 - `backing field`대신에 보조 프로퍼티를 만들어서 사용할 수 있다.
-    - `var tempName: String? = null`
+
+  - `var tempName: String? = null`
 
 - 프로퍼티의 오버라이딩 사용하기
-    - override 를 사용하여 부모와 구현을 다르게 할 수 있다. 
-  
+  - override 를 사용하여 부모와 구현을 다르게 할 수 있다.
+
 ### 2.2 지연 초기화와 위임 1) lateinit의 지연 초기화
+
 - 지연초기화가 필요한 이유
   - 객체의 정보가 나중에 나타나는 경우 나중에 초기화 할 수 있는 방법 필요
   - 지연 초기화를 위해 lateinit과 lazy 키워드 사용
@@ -46,8 +53,9 @@ fun main() {
     - 프로퍼티에 대한 게터와 세터 사용 불가능
 - 객체 생성시 lateinit을 통한 지연 초기화 가능
   - 객체 자체도 lateinit가능
-  
+
 ### 2.2 지연 초기화와 위임 2) by lazy를 통한 늦은 초기화
+
 - lazy를 통한 지연 초기화
   - 호출 시점에 `by lazy {...}` 정의에 의해 블록 부분의 초기화를 진행
     - 람다식 형태
@@ -66,14 +74,16 @@ fun main() {
     - NONE
       - 락을 사용하지 않기 때문에 빠르지만 다중 스레드 접근 가능
       - 일관성을 보장할 수 없음
-  
+
 ### 2.2 지연 초기화와 위임 3) 너에게 위임 하노라
+
 - by를 이용한 위임
 - 위임(delegation)
   - 하나의 클래스가 다른 클래스에 위임하도록 선언
   - 위임된 클래스가 가지는 멤버를 참조없이 호출
 - 클래스 위임
   - 다른 클래스의 멤버를 사용하도록 위임
+
 ```kotlin
 interface Animal {
     fun eat() {}
@@ -83,6 +93,7 @@ class Cat: Animal {}
 val cat = Cat()
 class Robot: Animal by Cat // animal에 정의된 cat의 모든 멤버를 robot에 위임
 ```
+
 - 위임을 사용하는 이유?
   - 코틀린의 기본 라이브러리는 open되어있지 않음
     - 상속이나 기능의 확장이 어렵다.
@@ -96,6 +107,7 @@ class Robot: Animal by Cat // animal에 정의된 cat의 모든 멤버를 robot�
   - 프로퍼티를 감시하고 있다가 특정 코드의 로직에서 변경이 일어날 경우 호출
 - vetoable
   - 반환값에 따라 프로퍼티 변경을 허용하거나 취소
+
 ```kotlin
 class User {
     var name: String by Delegates.observable("NONAME") {
@@ -106,6 +118,7 @@ class User {
 ```
 
 ### 정적 변수와 메서드
+
 - 정적 변수와 컴패니언 객체
   - 사용 범위에 따른 분류
     - 지역, 전역
@@ -114,6 +127,7 @@ class User {
     - 코틀린에서는 컴패니언 객체(Companion object)
     - 프로그램 실행시 고정적으로 메모리를 가져감
       - 메모리 낭비에 유의
+
 ```kotlin
 class Person {
   var id: Int = 0
@@ -133,6 +147,7 @@ fun main() {
   // person.name은 접근 불가
 }
 ```
+
 - 자바에서 코틀린 컴패니언 객체 사용
   - @JvmStatic
 - 최상위 함수 정리
