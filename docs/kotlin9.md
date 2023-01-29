@@ -34,17 +34,17 @@
 
 - 데이터 전달을 위한 객체 DTO(Data Transfer Object)
   - java 에서는 POJO(Plain Old Java Object)
-  - 구현 로직을 가ㅣㅈ고 있지 않음, 순수한 데이터 객체를 표현
+  - 구현 로직을 가지고 있지 않음, 순수한 데이터 객체를 표현
   - getter, setter 포함
   - toString, equal 같은 데이터 표현 및 비교 메서드 포함
-  - 코틀리는 프로퍼티만 신경써서 만들어주면 다른 것들은 자동 생성해준다.
+  - 코틀린은 프로퍼티만 신경써서 만들어주면 다른 것들은 자동 생성해준다.
 
 ## 코틀린의 데이터 클래스
 
 - data class 키워드를 사용해 정의
 - 게터, 세터, equals, hashCode, toString, copy, component1, component2 등 메서드 자동생성 지원
 
-## 데이터 클래스 선어
+## 데이터 클래스 선언
 
 - `data class Customer(var name: String, var email: String)`
 - 데이터 클래스의 조건

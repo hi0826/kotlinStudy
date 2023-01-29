@@ -163,3 +163,43 @@ fun <T> printObj(box: Box<out Animal>) {
 
 - 연산자를 통한 접근
   - get, set
+
+## 배열의 생성
+
+- 표현식을 통한 생성
+  - `val|var [name] = Array([count], [initval])`
+- 많은 양의 배열 생성
+  - `var a = arrayOfNulls <Int>(1000) // null로 채워진 1000개의 정수 배열`
+  - `var a = Array(1000, {0})`
+- 특정 클래스 객체로 배열 생성
+
+### 배열에 요소 추가하고 잘라내기
+
+- 배열은 정의되면 메모리에 고정됨
+  - 새로 할당하는 방법으로 추가하거나 잘라낼 수 있음
+
+### 배열 관련 api
+
+- first
+  - 첫 요소
+- last
+  - 마지막 요소
+- indexOf()
+  - 해당하는 인덱스 출력
+- average
+  - 배열의 평균 값 출력
+- count
+  - 요소의 개수
+- contains
+  - 존재 여부 확인
+  - in 연산자 사용 가능
+
+### 배열의 순환
+
+- 순환 매서드 사용
+  - forEach
+  - forEachIndexed
+- Iterator의 이용
+  - `val iter: Iterator<Int> = arr.iterator()`
+  - next, remove, hasNext의 메소드를 사용해서 접근한다
+- 컬렉션을 사용할 떄는 순환메서드를 사용하는게 좋다
