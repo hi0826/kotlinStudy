@@ -203,3 +203,28 @@ fun <T> printObj(box: Box<out Animal>) {
   - `val iter: Iterator<Int> = arr.iterator()`
   - next, remove, hasNext의 메소드를 사용해서 접근한다
 - 컬렉션을 사용할 떄는 순환메서드를 사용하는게 좋다
+
+## 배열의 정렬
+
+- 정렬
+  - 오름차순/내림차순으로 정렬
+  - Array는 기본적인 정렬 알고리즘 제공
+- 정렬된 배열 반환
+  - sortedArray()
+  - sortedArrayDescending()
+- 원본 배열에 대한 정렬을 진행
+  - sort()
+  - sortDescending()
+- sortBy를 사용해서 조건을 람다식으로 줄 수 있음
+- sortWith
+  - Comparator 사용
+  - compareBy 사용
+- filter 메서드를 활용하여 원하는 데이터 골라내기
+  - 메서드 체이닝 사용
+- when을 사용해서 요소 확인
+  - in 연산자 사용
+- 큰 값, 작은 값 골라내기
+  - minByOrNull
+  - maxByOrNull
+- 배열 평탄화하기
+  - flattern()
