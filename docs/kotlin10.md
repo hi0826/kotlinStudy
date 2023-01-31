@@ -228,3 +228,5 @@ fun <T> printObj(box: Box<out Animal>) {
   - maxByOrNull
 - 배열 평탄화하기
   - flattern()
+
+## 문자열 다루기
