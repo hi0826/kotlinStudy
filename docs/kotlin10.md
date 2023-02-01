@@ -230,3 +230,5 @@ fun <T> printObj(box: Box<out Animal>) {
   - flattern()
 
 ## 문자열 다루기
+
+- StringBuilder
