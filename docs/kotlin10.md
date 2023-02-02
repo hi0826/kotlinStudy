@@ -231,4 +231,74 @@ fun <T> printObj(box: Box<out Animal>) {
 
 ## 문자열 다루기
 
+### 문자열의 기본 처리
+
+- index로 접근 가능하다
+- 문자열은 불변 값으로 생성
+  - 참조되고 있는 메모리가 변경될 수 없다
+- 문자열이 변경되면 새로운 메모리 공간에 생성되고 GC에 의해서 기존 문자열은 제거
+
+### 문자열 추출하고 병합하기
+
+- String.substring([indexrange])
+  - 인덱스 범위를 지정하면 해당한 만큼 나옴
+- CharSequence.subsequence()
+- a.compareTo(b)
+  - 같으면 0, a가 작으면 -1, b가 작으면 +1
 - StringBuilder
+  - 문자열이 사용할 공간을 좀 더 크게 잡아 사용한다
+  - 간단한 요소 변경이 있을 경우 용이
+  - 기존의 문자열보다는 처리가 느리고, 단어를 변경하지않는 경우 불필요한 메모리 낭비
+  - 문자열이 자주 변경되는 경우 용이
+  - append
+    - 뒤에 추가
+  - insert
+    - 해당 index에 추가
+  - delete
+    - index range만큼 삭제
+- toLowerCase
+- toUpperCase
+- split
+  - 특정 문자단위로 잘라내기
+- trim
+  - 앞뒤 공백 제거
+
+### 리터럴 문자열
+
+- 이스케이프 문자열
+  - \\t, \\b, \\n, \\r, \\uHHHH, \\', \\", \\\, \\$
+- """
+  - 삼중 따옴표
+  - 프리포맷 문자열 처럼 문자열 그대로 사용가능함
+  - mark down 의 \```와 같은 효과
+  - |로 trimMargin 으로 구분자 사용가능
+    - 특정 문자는 trimMargin([seperator])로 사용
+
+### 형식 문자 사용
+
+- format을 사용한 형식문자
+- %b
+  - boolean
+- %d
+  - 정수형
+- %f
+  - 실수
+- %h
+  - 해시코드
+- %o
+  - 8진
+- %t
+  - 날짜, 시간
+- %c
+  - 문자
+- %e
+  - E표기법의 실수
+- %g
+  - 10진 혹은 E표기 실수
+- %n
+  - 줄 구분
+- %s
+  - 문자열
+- %x
+  - 16진 정수
+- `println("pi = %.2f, %3d, %s.format(pi, dec, s))"`
