@@ -66,3 +66,18 @@
   - 목록에 있는 iterator반환
 - subList
   - from ~ to에 있는 요소 리스트 반환
+
+## 가변형 list 생성
+
+- arrayListOf()
+  - 가변형 헬퍼 함수를 사용하면 손쉽게 요소를 추가하거나 삭제 가능
+  - 가변형 리스트를 생성하지만 반환 자료형은 ArrayList
+- mutableListOf()
+  - 반환형 MutableList\<T>
+
+## List와 배열의 차이
+
+- Array 클래스는 내부 구조상 고정된 크기
+  - 무변성
+- List, MutableList는 인터페이스로 설계, 이것을 하위 자료구조로 구현
+  - 공변성
