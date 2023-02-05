@@ -107,3 +107,76 @@
 - linkedSetOf()
 - 링크드 리스트를 사용해 구현된 해시 테이블
 - HashSet, TreeSet보다 느리지만, 데이터 구조상 포인터 연결을 통해 메모리를 효율적으로 사용함
+
+## Map
+
+- key, value로 구성된 요소를 저장
+- 키는 중복될 수 없으나, value는 중복 가능
+- mapOf(), mutableMapOf()
+- `mapOf(key to value)`
+- `for((key, value) in map)`
+- `[]`으로 key에 접근가능하다
+- keys
+  - 모든 키 반환
+- values
+  - 모든 값 반환
+- put
+  - 맵에 추가
+- remove
+  - 키에 해당하는 요소 제거
+- putAll
+- clear
+- hashMap, sortedMap, linkedHashMap
+- sortedMap의 경우 key를 기준으로 정렬
+
+## 컬렉션의 확장 함수
+
+- 확장 함수 범주
+  - 연산자(operators)
+  - 집계(aggregators)
+  - 검사(checks)
+  - 필터(filtering)
+  - 변환(transformers)
+
+### 요소의 처리와 집계에 대한 연산
+
+- forEach, forEachIndexed, onEach, count, max, min, maxBy, minBy, fold, reduce, sumBy
+- forEach
+  - 각 요소를 람다식으로 처리한 후 컬렉션을 반환하지 않음
+- onEach
+  - 각 요소를 람다식으로 처리한 후 컬렉션으로 반환
+- fold (foldRight)
+  - 초기값과 정해진 식에 따라 처음부터 끝까지 적용해 값 반환
+- reduce (reduceRight)
+  - fold와 동일하나 초기값을 사용하지 않음
+
+## 매핑관련 연산
+
+- map()
+  - 일괄적으로 모든 요소에 식을 적용해 **새로운** 컬렉션을 만듬
+- flatMap()
+  - 각 요소에 식을 적용한 후 하나로 합쳐 새로운 컬렉션 반환
+- groupBy()
+  - 주어진 식에 따라 그루화하고 Map으로 반환
+
+### 요소 관련 연산
+
+- element 관련 연산
+- elementAt, elementAtOrElse, elementAtOrNull
+
+### 순서와 정렬 연산
+
+- reversed, sorted, sortedDescending, sortedBy, sortedDescendingBy
+
+### 시퀀스
+
+- sequence
+  - 요소의 크기를 특정하지 않고 추후에 결정하는 특수한 컬렉션
+  - 특정 파일에서 줄 단위로 읽어서 요소를 만들 떄
+- generateSequence
+  - seed 에 의해 시작 요소의 값이 결정
+  - take()를 사용해 원하는 요소 개수만큼 획득
+  - toList를 사용해 List컬렉션으로 변환
+- asSequence()
+  - 중간 연산 결과 없이 한 번에 끝까지 연산한 후 결과를 반환
+  - 요소 개수가 많을경우 asSequence를 사용해서 메서드 체이닝을 처리하자
