@@ -38,3 +38,8 @@
   - object 키워드를 사용
 - 람다식
   - 람다식에서 사용
+
+### 스레드풀 사용하기
+
+- 자주 재사용되는 스레드를 이용하기 위해 미리 생성된 스레드풀에서 스레드 이용
+- `val myService:ExecutorService = Executors.newFixedThreadPool([numbers])`
