@@ -43,3 +43,50 @@
 
 - 자주 재사용되는 스레드를 이용하기 위해 미리 생성된 스레드풀에서 스레드 이용
 - `val myService:ExecutorService = Executors.newFixedThreadPool([numbers])`
+
+## 코루틴 개념
+
+- 스레드와 달리 코루틴을 통해서 복잡성을 줄이고 손쉽게 일시 중단하거나 다시 시작하는 루틴을 만들어낼 수 있다.
+- 멀티태스킹을 실현하면서 가벼운 스레드라고도 불림
+- 코루틴은 문맥 교환 없이 해당 루틴을 일시 중단을 통해 제어
+- 스레드 내부의 여러 루틴(routine)이 협력한다(co)
+
+### kotlinx.coroutines 의 common 패키지
+
+- launch / async
+  - coutine builder
+- job / deferred
+  - cancellation 지원
+- dispatchers
+  - default, main, io ...
+  - 디스패쳐에 따라 코루틴을 구성
+- delay / yield
+  - 상위 레벨 지연 함수
+- channel / mutex
+  - 통신과 동기화를 위한 기능
+- coroutineScope / supervisorScope
+  - 범위 빌더
+- select
+  - 표현식 지원
+- commonPool
+  - 코루틴 컨텍스트
+- produce / actor
+  - 코루틴 빌더
+
+### 코루틴 빌더
+
+- launch
+  - 실행하고 잊어버리는 형태의 코루틴
+  - 메인 프로그램과 독립되 실행할 수 있다
+  - 기본적으로 즉시 실행, 실행 결과는 반환하지 않음
+  - Job객체를 반환, 상위 코드를 블록시키지 않음
+  - join을 통해 상위 코드가 종료되지않고 완료를 기다리게할 수 있다
+- async
+  - 비동기 호출을 위해 만든 코루틴, 결과나 예외를 반환
+  - Deffered\<T>를 통해 반환, await을 통해 받을 수 있다
+  - 작업을 완료할때까지 대기
+- suspend
+  - 일시정지
+  - 코루틴 블록외에 사용하면 오류가 난다
+  - suspend가 붙은 함수는 컴파일러가 자동적으로 추출해 Continuation 클래스로부터 분리된 루틴을 만든다
+  - 코루틴 빌더인 launch와 async에서 이용할 수 있다
