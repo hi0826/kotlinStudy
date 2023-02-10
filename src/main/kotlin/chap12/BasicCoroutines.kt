@@ -3,13 +3,18 @@ package chap12
 import kotlinx.coroutines.*
 
 fun main() {
-    GlobalScope.launch {
-        delay(1000L)
-        doSomething()
-        println("World")
+    runBlocking {
+        val job = GlobalScope.launch {
+            delay(1000L)
+            doSomething()
+            println("World")
+        }
+        println("Hello")
+        println("job: ${job.isActive}, ${job.isCompleted}")
+        // Thread.sleep(2000L)
+        job.join()
+        println("job: ${job.isActive}, ${job.isCompleted}")
     }
-    println("Hello")
-    Thread.sleep(2000L)
 }
 
 suspend fun doSomething() {
